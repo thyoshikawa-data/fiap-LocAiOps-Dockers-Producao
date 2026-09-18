@@ -2,15 +2,19 @@
 
 Challenge Locaweb · FIAP 2TSCOA · Sprint 4 (entrega final).
 
-Este repositório implementa, de ponta a ponta, a arquitetura de produção do LocAiOps:
+Este repositório implementa e valida, de ponta a ponta, a arquitetura de produção do LocAiOps:
 extração orquestrada por Airflow, armazenamento em PostgreSQL, modelos de ML e uma API
 própria que serve as previsões — a mesma abordagem descrita no PPT de solução final.
 
+Optamos por não hospedar essa arquitetura em nuvem paga (AWS) nesta fase, por custo — ela
+está pronta, documentada e testada via Docker Compose, e sobe em qualquer máquina com um
+único comando (veja "Como rodar" abaixo).
+
 É complementar ao repositório principal do projeto, [fiap-LocAiOps](https://github.com/thyoshikawa-data/fiap-LocAiOps),
 que contém o dashboard público (Next.js, publicado na Vercel em
-[fiap-loc-ai-ops.vercel.app](https://fiap-loc-ai-ops.vercel.app/)). Enquanto aquele repositório
-roda com o pipeline simplificado (Python → JSON estático), este demonstra a stack completa
-rodando localmente via Docker.
+[fiap-loc-ai-ops.vercel.app](https://fiap-loc-ai-ops.vercel.app/)) — a camada final de
+visualização de toda a arquitetura, hoje exibindo dados reais dessa mesma pipeline de
+modelos, publicados como cache estático (JSON versionado) no repositório principal.
 
 ## Arquitetura
 
