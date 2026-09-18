@@ -1,0 +1,36 @@
+{
+  "title": "LocAiOps — Volume Operacional",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "panels": [
+    {
+      "id": 1,
+      "title": "Incidentes por dia",
+      "type": "timeseries",
+      "gridPos": { "h": 10, "w": 24, "x": 0, "y": 0 },
+      "datasource": { "type": "postgres", "uid": "LocAiOps Postgres" },
+      "targets": [
+        {
+          "rawSql": "SELECT date_trunc('day', aberto) AS time, count(*) AS volume FROM locaiops.incidentes_raw GROUP BY 1 ORDER BY 1",
+          "format": "time_series",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Violação de SLA por forma de abertura (%)",
+      "type": "barchart",
+      "gridPos": { "h": 10, "w": 24, "x": 0, "y": 10 },
+      "datasource": { "type": "postgres", "uid": "LocAiOps Postgres" },
+      "targets": [
+        {
+          "rawSql": "SELECT aberto_por, round(100.0 * avg(CASE WHEN kpi_violado = 'SIM' THEN 1 ELSE 0 END), 2) AS taxa_violacao_pct FROM locaiops.incidentes_raw WHERE entrou_kpi = 'SIM' GROUP BY aberto_por",
+          "format": "table",
+          "refId": "A"
+        }
+      ]
+    }
+  ]
+}

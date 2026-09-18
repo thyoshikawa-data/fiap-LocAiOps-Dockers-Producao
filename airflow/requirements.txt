@@ -1,0 +1,5 @@
+# pandas travado abaixo de 2.2 porque a partir da 2.2 o pandas.to_sql exige
+# SQLAlchemy >= 2.0, mas o Airflow 2.9.3 fixa SQLAlchemy 1.4.x.
+pandas==2.1.4
+openpyxl==3.1.2
+psycopg2-binary==2.9.9
