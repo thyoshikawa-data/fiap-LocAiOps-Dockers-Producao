@@ -70,21 +70,6 @@ services:
       postgres:
         condition: service_healthy
 
-  grafana:
-    image: grafana/grafana:11.1.0
-    environment:
-      GF_SECURITY_ADMIN_USER: admin
-      GF_SECURITY_ADMIN_PASSWORD: admin
-    volumes:
-      - ./grafana/provisioning:/etc/grafana/provisioning
-      - grafana_data:/var/lib/grafana
-    ports:
-      - "3001:3000"
-    depends_on:
-      postgres:
-        condition: service_healthy
-
 volumes:
   postgres_data:
   airflow_logs:
-  grafana_data:

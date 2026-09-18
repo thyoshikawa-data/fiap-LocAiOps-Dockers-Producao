@@ -25,7 +25,7 @@ Dataset ITSM  ->  Airflow (extração/ETL)  ->  PostgreSQL  ->  Modelos de ML (A
 | 3. Armazenamento | PostgreSQL | `db/schema.sql` |
 | 4. Modelos de ML | scikit-learn (RandomForest, KMeans) | `api/pipeline.py` |
 | 5. Camada de serviço | API REST (FastAPI) | `api/main.py` |
-| 6. Visualização | Grafana (operacional) + dashboard Next.js (repositório principal) | `grafana/` |
+| 6. Visualização | Dashboard Next.js (repositório principal, publicado na Vercel) | — |
 
 ## Dataset: real vs. amostra sintética
 
@@ -52,7 +52,6 @@ Serviços expostos:
 |---|---|---|
 | Airflow | http://localhost:8080 | admin / admin |
 | API (FastAPI) | http://localhost:8000/docs | — |
-| Grafana | http://localhost:3001 | admin / admin |
 | PostgreSQL | localhost:5432 | locaiops / locaiops |
 
 Depois de subir os containers, dispare a DAG de extração/carga (via UI do Airflow ou CLI):
